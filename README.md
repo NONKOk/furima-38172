@@ -5,44 +5,65 @@
 
 | Column             | Type   | Options                    |
 | ------------------ | ------ | -------------------------- |
-| name               | string | null: false , unique: true |
-| email              | string | null: false                |
+| nickname           | string | null: false                |
+| first_name_kanji   | string | null: false                |
+| last_name_kanji    | string | null: false                |
+| first_name_kana    | string | null: false                |
+| last_name_kana     | string | null: false                |
+| email              | string | null: false , unique: true |
 | encrypted_password | string | null: false                |
-| profile            | text   | null: false                |
-| occupation         | text   | null: false                |
-| position           | text   | null: false                |
+| birthday           | date   | null: false                |
 
 ### Association
 
-- has_many :prototypes
-- has_many :comments
+- has_many :orders
+- has_many :items
 
-## prototypes テーブル
+## items テーブル
 
-| Column       | Type             | Options                       |
-| ------------ | ---------------- | ----------------------------- |
-| title        | string           | null: false                   |
-| catch_copy   | text             | null: false                   |
-| concept      | text             | null: false                   |
-| image        | ActiveStorage    | null: false                   |
-| user         | references       | null: ture, foreign_key: true |
-
-### Association
-
-- belongs_to :users
-- has_many :comments
-
-## comments テーブル
-
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| content   | text       | null: false                    |
-| prototype | references | null: false, foreign_key: true |
-| user      | references | null: false, foreign_key: true |
+| Column             | Type             | Options                        |
+| ------------------ | ---------------- | ------------------------------ |
+| user               | references       | null: false, foreign_key: true |
+| item_name          | string           | null: false                    |
+| item_image         | references       | null: false                    |
+| explanation        | text             | null: false                    |
+| category_id        | integer          | null: false                    |
+| status_id          | integer          | null: false                    |
+| delivery_charge_id | integer          | null: false                    |
+| prefecture_id      | integer          | null: false                    |
+| sending_day_id     | integer          | null: false                    |
+| price              | integer          | null: false                    |
 
 ### Association
 
 - belongs_to :users
-- belongs_to :prototypes
+- has_many :orders
 
+## orders テーブル
 
+| Column  | Type       | Options           |
+| ------  | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
+
+### Association
+
+- belongs_to :users
+- belongs_to :items
+- has_one :addresses
+
+## addresses テーブル
+
+| Column        | Type       | Options           |
+| ------------- | ---------- | ----------------- |
+| order         | references | foreign_key: true |
+| post_code     | string     | null: false       |
+| prefecture_id | integer    | null: false       |
+| city          | string     | null: false       |
+| house_id      | string     | null: false       |
+| building      | string     |                   |
+| phone_num     | string     | null: false       |
+
+### Association
+
+- belongs_to :orders
