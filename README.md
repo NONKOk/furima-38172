@@ -16,8 +16,8 @@
 
 ### Association
 
-- has_many :orders
-- has_many :items
+- has_many :order
+- has_many :item
 
 ## items テーブル
 
@@ -25,7 +25,6 @@
 | ------------------ | ---------------- | ------------------------------ |
 | user               | references       | null: false, foreign_key: true |
 | item_name          | string           | null: false                    |
-| item_image         | references       | null: false                    |
 | explanation        | text             | null: false                    |
 | category_id        | integer          | null: false                    |
 | status_id          | integer          | null: false                    |
@@ -48,9 +47,9 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :addresses
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## addresses テーブル
 
@@ -60,10 +59,10 @@
 | post_code     | string     | null: false       |
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
-| house_id      | string     | null: false       |
+| house_num     | string     | null: false       |
 | building      | string     |                   |
 | phone_num     | string     | null: false       |
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
