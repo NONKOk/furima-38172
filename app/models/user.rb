@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  has_many :items
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :validatable
+  
+ #   has_many :items
 
   with_options presence: true do
     validates :nickname
@@ -21,6 +21,5 @@ class User < ApplicationRecord
     end
   end
 
-  validates :nickname, presence: true
   validates :password, :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\d]{6,}/ }
 end
