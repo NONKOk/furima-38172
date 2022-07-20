@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :item_name
 
     # ジャンルの選択が「--」の時は保存できないようにする
-    with_options numericality: { other_than: 1 ,  message: "can't be blank"} do
+    with_options numericality: { other_than: 1, message: "can't be blank" } do
       validates :category_id
       validates :status_id
       validates :delivery_charge_id
@@ -28,5 +28,4 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   has_many :orders
-
 end
