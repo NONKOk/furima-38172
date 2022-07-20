@@ -1,11 +1,13 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   with_options presence: true do
-    validates :text
+    validates :user_id
+    validates :explanation
     validates :price,
               numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                               message: 'is out of setting range' }
     validates :image
-    validates :name
+    validates :item_name
 
     # ジャンルの選択が「--」の時は保存できないようにする
     with_options numericality: { other_than: 1 ,  message: "can't be blank"} do

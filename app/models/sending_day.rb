@@ -1,4 +1,4 @@
-class Delivery_day < ActiveHash::Base
+class SendingDay < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '1~2日で発送' },
@@ -7,4 +7,4 @@ class Delivery_day < ActiveHash::Base
   ]
   include ActiveHash::Associations
   has_many :items
-  end
+end
