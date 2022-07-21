@@ -1,10 +1,11 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   with_options presence: true do
-    validates :user
+    #validates :user
     validates :explanation
     validates :price,
               numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+              validates :price, numericality: { only_integer: true, message: "Half-width number." }
     validates :image
     validates :item_name
 
@@ -27,5 +28,5 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   belongs_to :user
-  has_many :orders
+#  has_many :orders
 end

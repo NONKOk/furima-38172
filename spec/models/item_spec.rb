@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  describe '商品出品機能' do
     before do
       @item = FactoryBot.build(:item)
-      @item.image = fixture_file_upload('public/images/yubiwa.jpeg')
     end
 
     # 正常テスト
     context '商品の出品ができる場合' do
-      context '出品できるとき' do      
+      describe '商品出品機能' do      
         it "すべての項目が入力されていれば、出品できる" do
           expect(@item).to be_valid
         end
@@ -23,7 +21,7 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User can't be blank")
+        expect(@item.errors.full_messages).to include("User must exist")
       end
 
       it 'imageが空では登録できない' do
@@ -52,7 +50,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
-        @item.category_id = '---'
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -64,7 +62,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品の状態が「---」では登録できない' do
-        @item.status_id = '---'
+        @item.status_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
@@ -77,7 +75,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '配送料の負担が「---」では登録できない' do
-        @item.delivery_charge_id = '---'
+        @item.delivery_charge_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
       end
@@ -89,7 +87,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送元の地域が「---」では登録できない' do
-        @item.prefecture_id = '---'
+        @item.prefecture_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -101,7 +99,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数が「---」では登録できない' do
-        @item.sending_day_id = '---'
+        @item.sending_day_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Sending day can't be blank")
       end
@@ -144,5 +142,5 @@ RSpec.describe Item, type: :model do
       end
 
     end
-  end
+
 end

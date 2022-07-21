@@ -1,8 +1,6 @@
 FactoryBot.define do
   factory :item do
   association :user
-    # イメージ
-    image { Faker::Lorem.sentence }
 
     # 商品名
     item_name { Faker::Lorem.characters(number: 6, min_alpha: 1, min_numeric: 1) }
