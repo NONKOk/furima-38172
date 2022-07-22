@@ -6,7 +6,7 @@
 
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <%= form_with model: @item,local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -138,7 +138,7 @@
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', "#", class:"back-btn" %>
+      <%=link_to 'もどる', "root_path", class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
