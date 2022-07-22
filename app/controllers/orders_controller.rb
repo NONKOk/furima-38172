@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @order = Order.new
+    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -19,5 +20,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:price)
   end
-  
+
 end
