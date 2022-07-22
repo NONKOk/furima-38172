@@ -53,15 +53,15 @@
 
 ## addresses テーブル
 
-| Column        | Type       | Options           |
-| ------------- | ---------- | ----------------- |
+| Column        | Type       | Options                       |
+| ------------- | ---------- | ----------------------------- |
 | order         | references | null: false,foreign_key: true |
-| post_code     | string     | null: false       |
-| prefecture_id | integer    | null: false       |
-| city          | string     | null: false       |
-| house_num     | string     | null: false       |
-| building      | string     |                   |
-| phone_num     | string     | null: false       |
+| post_code     | string     | null: false                   |
+| prefecture_id | integer    | null: false                   |
+| city          | string     | null: false                   |
+| house_num     | string     | null: false                   |
+| building      | string     |                               |
+| phone_num     | string     | null: false                   |
 
 ### Association
 
