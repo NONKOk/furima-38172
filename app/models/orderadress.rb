@@ -19,21 +19,24 @@ class OrderAddress
     # 配送先住所
     # 郵便番号
     validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    # 市町村
+    validates :city
+  
+    # 番地
+    validates :house_num
+    
+    # 建物名
+    validates :building
+
+    # 電話番号
+    validates :phone_num, numericality: { only_integer: true }
+
   end
 
   validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
   
-  # 市町村
-  validates :city
-  
-  # 番地
-  validates :house_num
-  
-  # 建物名
-  validates :building
-  
   # 電話番号
-  validates :phone_num
+  validates :phone_num, length: { minimum: 10, maximum: 11 }
 
   def save
     # 寄付情報を保存し、変数donationに代入する
