@@ -7,9 +7,9 @@ class OrdersController < ApplicationController
 
   def create
     binding.pry
-    @order = Order.new(order_params)
-    if @order.valid?
-      @order.save
+    @orderaddress = OrderAddress.new(order_params)
+    if @orderaddress.valid?
+      @orderaddress.save
       return redirect_to root_path
     else
       render 'index'
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order,:post_code,:prefecture_id,:city,:house_num,:building,:phone_num).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.permit(:post_code,:prefecture_id,:city,:house_num,:building,:phone_num).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
 end

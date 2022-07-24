@@ -2,7 +2,7 @@ class OrderAddress
 
   include ActiveModel::Model
   # orderテーブルとaddressbookテーブルに保存したいカラム名を指定
-  attr_accessor :post_code,:prefecture_id,:city,:house_num,:building,:phone_num,:user_id,:item_id
+  attr_accessor :postnum,:prefecture_id,:city,:banchi,:tower,:phone,:user_id,:item_id,:order_id
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
@@ -33,18 +33,18 @@ class OrderAddress
 
   end
 
-  validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
+  validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
   
   # 電話番号
   validates :phone_num, length: { minimum: 10, maximum: 11 }
 
   def save
-    # 寄付情報を保存し、変数donationに代入する
-    order = order.create(item_id: item_id, user_id: user_id)
+    # 寄付情報を保存し、変数orderに代入する
+    order = Order.create(item_id: item_id, user_id: user_id)
     
     # 住所を保存する
 
-    # donation_idには、変数donationのidと指定する
-    Addressbooks.create(order: order, post_code: post_code, prefecture_id: prefecture_id, city: city, house_num: house_num, building: building, phone_num: phone_num)
+    # order_idには、変数orderのidと指定する
+    Addressbook.create(order_id:order[:id], post_code: post_code, prefecture_id: prefecture_id, city: city, house_num: house_num, building: building, phone_num: phone_num)
   end
 end
