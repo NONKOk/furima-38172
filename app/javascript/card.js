@@ -7,11 +7,13 @@ const pay = () => {
     const formData = new FormData(formResult);
      
     const card = {
-      number: formData.get("order[number]"),
-      cvc: formData.get("order[cvc]"),
-      exp_month: formData.get("order[exp_month]"),
-      exp_year: `20${formData.get("order[exp_year]")}`,
+      number: formData.get("orderaddress[number]"),
+      cvc: formData.get("orderaddress[cvc]"),
+      exp_month: formData.get("orderaddress[exp_month]"),
+      exp_year: `20${formData.get("orderaddress[exp_year]")}`,
     };
+
+    console.log("フォーム送信時にイベント発火")
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
