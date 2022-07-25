@@ -18,6 +18,12 @@ const pay = () => {
         const token = response.id;
         console.log(token)
       }
+      document.getElementById("orderaddress_number").removeAttribute("name");
+      document.getElementById("orderaddress_cvc").removeAttribute("name");
+      document.getElementById("orderaddress_exp_month").removeAttribute("name");
+      document.getElementById("orderaddress_exp_year").removeAttribute("name");
+
+      document.getElementById("charge-form").submit();
     });
   });
 };
