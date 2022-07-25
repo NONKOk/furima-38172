@@ -13,7 +13,6 @@ const pay = () => {
       exp_year: `20${formData.get("orderaddress[exp_year]")}`,
     };
 
-    console.log("フォーム送信時にイベント発火")
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
