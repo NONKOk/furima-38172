@@ -8,7 +8,7 @@ RSpec.describe OrderAddress, type: :model do
     #@user.save	
     #@item.save
     @order_address = FactoryBot.build(:order_address, user_id: @user.id, item_id: @item.id)
-    sleep 0.1
+    sleep 1
   end
 
   context '内容に問題ない場合' do
