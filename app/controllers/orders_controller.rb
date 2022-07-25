@@ -5,16 +5,16 @@ class OrdersController < ApplicationController
 
   def index
     @order = Order.new
-    @orderaddress = OrderAddress.new(order_params)
+    @order_address = OrderAddress.new(order_params)
     return redirect_to root_path if current_user.id == @item.user_id || !@item.order.nil?
   end
 
   def create
     #binding.pry
-    @orderaddress = OrderAddress.new
-    if @orderaddress.valid?
+    @order_address = OrderAddress.new
+    if @order_address.valid?
       pay_item
-      @orderaddress.save
+      @order_address.save
       return redirect_to root_path
     else
       render 'index'
