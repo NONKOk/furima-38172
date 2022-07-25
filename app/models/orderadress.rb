@@ -20,6 +20,9 @@ class OrderAddress
     # 配送先住所
     # 郵便番号
     validates :post_code, format: {with: /\A\d{7}\z/, message: "is invalid. Include hyphen(-)"}
+
+    #都道府県
+    validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
     # 市町村
     validates :city
   
@@ -30,15 +33,9 @@ class OrderAddress
     validates :building
 
     # 電話番号
-    validates :phone_num, numericality: { only_integer: true }
+    validates :phone_num, format: { with: /\A\d{10,11}\z/ } # length :{minimum: 10, maximum: 11}と入れ替え
 
   end
-
-  validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
-  
-  # 電話番号
-  validates :phone_num, format: { with: /\A\d{10,11}\z/ } # length :{minimum: 10, maximum: 11}と入れ替え
-
   def save
     # 寄付情報を保存し、変数orderに代入する
     order = Order.create(item_id: item_id, user_id: user_id)
