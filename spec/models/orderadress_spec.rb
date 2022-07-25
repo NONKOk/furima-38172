@@ -15,6 +15,11 @@ RSpec.describe OrderAddress, type: :model do
     it "priceがあれば保存ができる" do
       expect(@orderaddress).to be_valid
     end
+
+    it '建物が空でも保存できる' do
+      @order_address.building = ''
+      expect(@order_address).to be_valid
+    end
   end
 
   context '内容に問題がある場合' do
