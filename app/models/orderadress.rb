@@ -9,6 +9,7 @@ class OrderAddress
     validates :user_id
     validates :item_id
     validates :token
+    attr_accessor :token
 
     # カード情報
     validates :
