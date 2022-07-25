@@ -18,7 +18,7 @@ class OrderAddress
 
     # 配送先住所
     # 郵便番号
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
     # 市町村
     validates :city
   
@@ -36,7 +36,7 @@ class OrderAddress
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
   
   # 電話番号
-  validates :phone_num, length: { minimum: 10, maximum: 11 }
+  validates :phone_num, length: { minimum: 10, maximum: 11 }# with: /\A\d{10,11}\z/（電話番号バリテーション）に変更するか？
 
   def save
     # 寄付情報を保存し、変数orderに代入する
