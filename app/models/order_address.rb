@@ -33,7 +33,6 @@ class OrderAddress
     # 寄付情報を保存し、変数orderに代入する
     order = Order.create(item_id: item_id, user_id: user_id)
     
-    # 住所を保存する
 
     # order_idには、変数orderのidと指定する
     Address.create(order_id:order[:id], post_code: post_code, prefecture_id: prefecture_id, city: city, house_num: house_num, building: building, phone_num: phone_num)
