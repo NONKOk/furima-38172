@@ -23,9 +23,6 @@ class OrderAddress
     # 番地
     validates :house_num
     
-    # 建物名
-    validates :building
-
     # 電話番号
     validates :phone_num, format: { with: /\A\d{10,11}\z/ } # length :{minimum: 10, maximum: 11}と入れ替え
 
