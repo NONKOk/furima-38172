@@ -54,7 +54,7 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it  "都道府県名が未定では登録できない" do
-      @order_address.prefecture_id = 0
+      @order_address.prefecture_id = " "
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
     end
@@ -107,5 +107,10 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Phone num is invalid")
     end
 
+    it "郵便番号は半角ハイフンを含む形でないと購入できない" do
+      @order_address.phone_num = '090ー1234ー5678'
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Phone num is invalid")
+    end
   end
 end
