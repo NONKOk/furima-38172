@@ -54,7 +54,7 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it  "都道府県名が未定では登録できない" do
-      @order_address.prefecture_id = " "
+      @order_address.prefecture_id = 1
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
     end
