@@ -12,10 +12,10 @@ class OrderAddress
 
     # 配送先住所
     # 郵便番号
-    validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "には『-』(ハイフン)が必要です" }
 
     #都道府県
-    validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
+    validates :prefecture_id, numericality: {other_than: 1, message: "を正しく選択してください" }
     
     # 市町村
     validates :city
@@ -24,7 +24,7 @@ class OrderAddress
     validates :house_num
     
     # 電話番号
-    validates :phone_num, format: { with: /\A\d{10,11}\z/ } # length :{minimum: 10, maximum: 11}と入れ替え
+    validates :phone_num, format: { with: /\A\d{10,11}\z/ } 
 
   end
   def save

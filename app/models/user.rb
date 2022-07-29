@@ -22,5 +22,5 @@ class User < ApplicationRecord
     end
   end
 
-  validates :password, :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\d]{6,}/ }
+  validates :password, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\d]{6,}/ }
 end

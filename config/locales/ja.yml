@@ -3,29 +3,29 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
-        last_name: お名前(全角)
-        first_name: お名前(全角)
-        last_name_kana: お名前(カナ)
-        first_name_kana: お名前(カナ)
-        birth_date: 生年月日
+        last_name_kanji: お名前（名字）
+        first_name_kanji: お名前（名前）
+        last_name_kana: お名前(ミョウジ)
+        first_name_kana: お名前(ナマエ)
+        birthday: 生年月日
 
       item:
         image: 商品画像
-        name: 商品名
-        info: 商品の説明
+        item_name: 商品名
+        explanation: 商品の説明
         category_id: カテゴリー
-        sales_status_id: 商品の状態
-        shipping_fee_id: 配送料の負担
+        status_id: 商品の状態
+        delivery_charge_id: 配送料の負担
         prefecture_id: 発送元の地域
-        scheduled_delivery_id: 発送までの日数
+        sending_day_id: 発送までの日数
         price: 販売価格
         
   activemodel:
     attributes:
-      order_history_address:
-        postal_code: 郵便番号
+      order_address:
+        post_code: 郵便番号
         prefecture_id: 都道府県
         city: 市町村
-        addresses: 番地
-        phone_number: 電話番号
+        house_num: 番地
+        phone_num: 電話番号
         token: クレジットカード情報
